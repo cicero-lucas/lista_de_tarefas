@@ -6,7 +6,7 @@ export default function Main(){
 
     function addTarefa(form){
         form.preventDefault()
-        setTarefa(texto)
+        setTarefa([...texto])
         setTexto('')
         document.getElementById('itarefa').focus()
         console.log(tarefa)
@@ -30,15 +30,15 @@ export default function Main(){
                 <section>
                     {tarefa.length<1
                         ?
-                        <div>
-                            <p>aaaaaaaaaaaaaaaaa</p>
+                        <div className="aviso">
+                            <p>Sem Tarefas no Momento</p>
                         </div>
                         :
-                        <section>
-                            {tarefa.map((el,index)=>(
-                                <p key={index}>{el}</p>
-                            ))}
-                        </section>
+                        <div>
+                        {tarefa.map((item, index) => (
+                          <p key={index}>{item}</p>
+                        ))}
+                      </div>
                     }
                 </section>
 
