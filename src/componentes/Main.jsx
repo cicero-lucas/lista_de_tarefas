@@ -34,7 +34,7 @@ export default function Main(){
                             <p>Sem Tarefas no Momento</p>
                         </div>
                         :
-                        <div>
+                        <div className="teste">
                         {tarefa.map((item, index) => (
                           <p key={index}>{item}</p>
                         ))}
