@@ -6,12 +6,18 @@ export default function Main(){
 
     function addTarefa(form){
         form.preventDefault()
-        setTarefa([...texto])
+        setTarefa([...tarefa],{text:texto,comp:false})
         setTexto('')
-        document.getElementById('itarefa').focus()
-        console.log(tarefa)
-        
+        document.getElementById('itarefa').focus()   
     }
+
+    const delTarefa= (index)=>{
+        const listaAux=[...tarefa]
+        listaAux.splice(index,1)
+        setTarefa(listaAux)
+        console.log(listaAux)
+    }
+    
 
     return(
         <>
@@ -28,17 +34,30 @@ export default function Main(){
                 </form>
 
                 <section>
-                    {tarefa.length<1
+                    {tarefa.length>=1
                         ?
-                        <div className="aviso">
-                            <p>Sem Tarefas no Momento</p>
-                        </div>
+                       
+                        
+                            <div>
+                                {Object.values(tarefa).map((item, index) => (
+                                    <div key={index} className="item">
+                                        <p key={index} className="tarefa">{item}</p>
+                                        <div className="btnd ">
+                                            <button onClick={()=>delTarefa(index)}>Deletar</button></div>
+                                    </div>
+                                
+                                ))}
+                            </div>
+                       
+                       
+                        
+                     
                         :
-                        <div className="teste">
-                        {tarefa.map((item, index) => (
-                          <p key={index}>{item}</p>
-                        ))}
-                      </div>
+
+                    <div className="aviso">
+                        <p>Sem Tarefas no Momento</p>
+                    </div>
+                        
                     }
                 </section>
 
