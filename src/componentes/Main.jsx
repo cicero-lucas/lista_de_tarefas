@@ -6,16 +6,22 @@ export default function Main(){
 
     function addTarefa(form){
         form.preventDefault()
-        setTarefa([...tarefa],{text:texto,comp:false})
+        setTarefa([...tarefa,{text:texto,comp:false}])
         setTexto('')
-        document.getElementById('itarefa').focus()   
+        document.getElementById('itarefa').focus()
+        console.log(tarefa)
     }
 
     const delTarefa= (index)=>{
         const listaAux=[...tarefa]
         listaAux.splice(index,1)
         setTarefa(listaAux)
-        console.log(listaAux)
+    }
+
+    const MarkTarefa= (index)=>{
+        const listaAux=[...tarefa]
+        listaAux[index].comp=!listaAux[index].comp
+        setTarefa(listaAux)
     }
     
 
@@ -38,15 +44,22 @@ export default function Main(){
                         ?
                        
                         
-                            <div>
-                                {Object.values(tarefa).map((item, index) => (
-                                    <div key={index} className="item">
-                                        <p key={index} className="tarefa">{item}</p>
+                            <div className="caixaItem">
+
+                                {(tarefa).map((item, index) => (
+                                    <div key={index} className={(item.comp)?'item mark': 'item'}>
+
+                                        <div key={index} className="tarefa "  onClick={()=>MarkTarefa(index)}>
+                                            {item.text}</div>
+
                                         <div className="btnd ">
                                             <button onClick={()=>delTarefa(index)}>Deletar</button></div>
-                                    </div>
+                                        </div>
                                 
                                 ))}
+
+
+                               
                             </div>
                        
                        
