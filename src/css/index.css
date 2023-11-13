@@ -7,7 +7,7 @@
 }
 
 body{ 
-    background-color:#222435;
+    background-color:#2a2c43;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@ header h1{
     padding: 50px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 600;
-    color: #7d83b9;
+    color: #7381ff;
     text-shadow: 1px 1px 1px black;
 }
 

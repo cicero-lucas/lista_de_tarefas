@@ -6,10 +6,13 @@ export default function Main(){
 
     function addTarefa(form){
         form.preventDefault()
-        setTarefa([...tarefa,{text:texto,comp:false}])
-        setTexto('')
-        document.getElementById('itarefa').focus()
-        console.log(tarefa)
+        if(texto==null || texto=="" || texto==undefined){
+            alert('Digite sua Tarefa!')
+        }else{
+            setTarefa([...tarefa,{text:texto,comp:false}])
+            setTexto('')
+            document.getElementById('itarefa').focus()
+        }  
     }
 
     const delTarefa= (index)=>{
